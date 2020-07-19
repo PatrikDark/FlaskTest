@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OurStory</title>
+</head>
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"/>
+
+<body>
+
+
+<section class="text-gray-700 body-font relative">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-12">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Story Board</h1>
+      {% for category, message in get_flashed_messages(with_categories = true) %}
+          <h1 class="tracking-widest font-medium title-font text-gray-900">{{ message }}</h1>
+      {% endfor %}
+    </div>
+
+	
+    <div class="lg:w-1/2 md:w-2/3 mx-auto">
+	<form method="post" action="" >
+      <div class="flex flex-wrap -m-2">
+        <div class="p-2 w-full">
+          <input id="author" name = "author" class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 py-2" placeholder="Name" type="text">
+        </div>
+        
+        <div class="p-2 w-full">
+          <textarea id="content" name = "content" class="w-full bg-gray-100 rounded border border-gray-400 focus:outline-none h-48 focus:border-indigo-500 text-base px-4 py-2 resize-none block" placeholder="Story"></textarea>
+        </div>
+        <div class="p-2 w-full">
+          <button type="submit" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+        </div>
+      
+      </div>
+	</form>
+    </div>
+	
+  </div>
+</section>
+
+<section class="text-gray-700 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="-my-8">
+      {% for story in stories %}
+      <div class="py-8 flex border-t-2 border-gray-200 flex-wrap md:flex-no-wrap">
+        <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+          <span class="tracking-widest font-medium title-font text-gray-900">{{ story.author }}</span>
+        </div>
+        <div class="md:flex-grow">
+          <p class="leading-relaxed">{{ story.content }}</p>
+        </div>
+      </div>
+        {% endfor %}
+     
+    </div>
+  </div>
+</section>
+
+
+
+
+</body>
+
+</html>
